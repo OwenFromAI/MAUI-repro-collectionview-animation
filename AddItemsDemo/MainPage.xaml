@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vms="clr-namespace:AddItemsDemo.ViewModels"
+             x:Class="AddItemsDemo.MainPage">
+
+    <Grid RowDefinitions="*, Auto" ColumnDefinitions="*">
+
+        <CollectionView
+            BackgroundColor="AliceBlue"
+            ItemsSource="{Binding Readings}"
+            Grid.Row="0"
+            HorizontalOptions="CenterAndExpand"
+            VerticalOptions="Start">
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="{x:Type vms:Reading}">
+                    <Grid ColumnDefinitions="Auto, 35, 95, 95, *" HorizontalOptions="Center">
+
+                        <Label Text="{Binding StationNumber}" />
+
+                        <Entry
+                            Text="{Binding Marker}"
+                            Grid.Column="1" />
+
+                        <Entry
+                            Text="{Binding Reading1}"
+                            Grid.Column="2" />
+
+                        <Entry
+                            Text="{Binding Reading2}"
+                            Grid.Column="3" />
+
+                        <Label
+                            HorizontalOptions="Start"
+                            Text="{Binding Remarks}"
+                            Grid.Column="4" />                       
+                      
+                       
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+            
+        </CollectionView>
+
+        <HorizontalStackLayout
+            Grid.Row="1"
+            HorizontalOptions="Center">
+
+            <Button
+                Text="Start Insert"
+                Command="{Binding StartInsertCommand}" />
+
+            <Button
+                Text="Start Add"
+                Command="{Binding StartAddCommand}" />
+
+            <Button
+                Text="Stop"
+                Command="{Binding StopCommand}" />
+
+        </HorizontalStackLayout>
+
+    </Grid>
+
+</ContentPage>
